@@ -42,10 +42,10 @@ public class Book {
 
     /**
      *  @access private
-     *  @var String description - год выпуска книги
+     *  @var String yearOfIssue - год выпуска книги
      */
     @Column( name = "year_of_issue" )
-    private String year_of_issue;
+    private String yearOfIssue;
 
     /**
      *  @access private
