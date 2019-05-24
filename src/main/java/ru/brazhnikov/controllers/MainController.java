@@ -1,5 +1,6 @@
 package ru.brazhnikov.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author  Vasya Brazhnikov
  * @copyright Copyright (c) 2019, Vasya Brazhnikov
  */
+@Controller
 public class MainController {
 
     /**

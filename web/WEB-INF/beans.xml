@@ -54,6 +54,10 @@
 
     <jpa:repositories base-package="ru.brazhnikov"/>
 
+    <bean id="authenticationProvider" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <constructor-arg name="strength" value="10" />
+    </bean>
+
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="packagesToScan" value="ru.brazhnikov"/>
         <property name="dataSource" ref="myDataSource"/>
