@@ -1,131 +1,82 @@
 package ru.brazhnikov.entities;
 
+import lombok.Getter;
+import lombok.Setter;
 import javax.persistence.*;
 import java.util.Collection;
 
+/**
+ * User - класс сущность - пользователь
+ *
+ * @version 1.0.1
+ * @package ru.brazhnikov.entities
+ * @author  Vasya Brazhnikov
+ * @copyright Copyright (c) 2019, Vasya Brazhnikov
+ */
+@Getter
+@Setter
 @Entity
-@Table(name = "users")
+@Table( name = "users" )
 public class User {
+
+    /**
+     * @access private
+     * @var int id - перавичный ключ таблицы
+     */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column( name = "id" )
     private Long id;
 
-    @Column(name = "username")
+    /**
+     * @access private
+     * @var String username - логин
+     */
+    @Column( name = "username" )
     private String userName;
 
-    @Column(name = "password")
+    /**
+     * @access private
+     * @var String password - пароль
+     */
+    @Column( name = "password" )
     private String password;
 
-    @Column(name = "first_name")
+    /**
+     * @access private
+     * @var String first_name - имя
+     */
+    @Column( name = "first_name" )
     private String firstName;
 
-    @Column(name = "last_name")
+    /**
+     * @access private
+     * @var String last_name - фамилия
+     */
+    @Column( name = "last_name" )
     private String lastName;
 
-    @Column(name = "email")
+    /**
+     * @access private
+     * @var String email - электронная почта
+     */
+    @Column( name = "email" )
     private String email;
 
-    @Column(name = "phone")
+    /**
+     * @access private
+     * @var String phone - телефон
+     */
+    @Column( name = "phone" )
     private String phone;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    /**
+     * @access private
+     * @var Collection<Role> roles - колекция ролей
+     */
+    @ManyToMany( fetch = FetchType.LAZY )
+    @JoinTable( name = "users_roles",
+            joinColumns = @JoinColumn( name = "user_id" ),
+            inverseJoinColumns = @JoinColumn( name = "role_id" ) )
     private Collection<Role> roles;
-
-    public User() {
-    }
-
-    public User(String userName, String password, String firstName, String lastName, String email, String phone) {
-        this.userName = userName;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-    }
-
-    public User(String userName, String password, String firstName, String lastName, String email, String phone,
-                Collection<Role> roles) {
-        this.userName = userName;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.roles = roles;
-        this.phone = phone;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + "*********" + '\''
-                + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\''
-                + ", roles=" + roles + '}';
-    }
 }

@@ -22,4 +22,13 @@ public class MainController {
     public String showHomePage() {
         return "index";
     }
+
+    /**
+     * showProfilePage -
+     * @return String
+     */
+    @RequestMapping( "/profile" )
+    public String showProfilePage() {
+        return "profile";
+    }
 }

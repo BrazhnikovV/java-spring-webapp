@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <title>Students List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -16,12 +15,9 @@
 </head>
 
 <body>
-<div class="fluid-container">
-    <nav>
-        <div th:replace="~{my-menu :: mymenu(StudentsList)}">
-        </div>
-    </nav>
-</div>
+
+<div th:replace="~{navigation :: navi(StudentsList)}" />
+
 <div class="container">
     <h1>Students List</h1>
     <table class="table">
@@ -29,24 +25,20 @@
         <tr class="thead-dark">
             <td>Id</td>
             <td>Name</td>
-            <td>Name length</td>
+            <td>Info</td>
             <td>Actions</td>
             <td>Check Name</td>
         </tr>
         </thead>
 
-        <!--<tr th:each="student : ${studentsList}" th:inline="text">-->
-        <tr th:each="student : ${studentsList}">
+        <tr class="myTableRow responsive-row" th:each="student : ${studentsList}" th:attr="entryIndex=${student.id}">
             <td th:text="${student.id}"/>
             <td th:text="${student.name}"/>
-            <td th:text="${student.name.length()}"/>
-            <!--<h1>Hello [[${student.name}]]!</h1>-->
             <!--<td th:text="${student.courses}"/>-->
-
+            <td th:text="${student.name.length()}"/>
             <td>
-                <button class="btn btn-primary infoBtn" th:attr="entryIndex=${student.id}">Info</button>
-                <!--<button class="btn btn-primary removeBtn" th:attr="entryIndex=${student.id}">Remove</button>-->
-                <a class="btn btn-danger" th:href="@{'/students/remove/' + ${student.id}}" role="button">Remove</a>
+                <button class="btn btn-primary removeBtn" th:attr="entryIndex=${student.id}">Remove</button>
+                <a class="btn btn-danger" th:href="'/students/remove/' + ${student.id}" role="button">Remove</a>
             </td>
             <td>
                 <p th:if="${student.name.length()} &gt; 3">
@@ -56,11 +48,12 @@
                     To short
                 </p>
             </td>
+
         </tr>
     </table>
-    <!--<br>-->
-    <!--<a href="/">Back To Main Page</a>-->
-    <!--<br>-->
+    <br>
+    <a href="/">Back To Main Page</a>
+    <br>
     <button id="consoleTestBtn" >Console</button>
     <input id="myInput" />
 </div>
