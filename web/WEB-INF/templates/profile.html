@@ -17,29 +17,13 @@
 <div th:replace="~{navigation :: navi(Home)}" />
 
 <div class="container">
-    <h1>Welcome page</h1>
-
+    <h1>Profile page</h1>
     <div sec:authorize="isAuthenticated()">
         Authenticated username:
         <div sec:authentication="principal.username"></div>
         Authenticated user roles:
         <div sec:authentication="principal.authorities"></div>
     </div>
-
-    <!--<div sec:authorize access="hasAnyRole('ADMIN', 'USER')">-->
-    <div sec:authorize="hasRole('ADMIN')">
-        This content will only be visible to users who have the "supervisor" authority in their list of <tt>GrantedAuthority</tt>s.
-    </div>
-
-    <h2>Index:</h2>
-    <br>
-    <a href="/students/list">Show students list</a>
-    <br>
-    <a href="/students/add">Add new student</a>
-    <button id="testBtn">Test</button>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 </body>
 </html>

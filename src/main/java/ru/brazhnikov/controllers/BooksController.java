@@ -59,8 +59,8 @@ public class BooksController {
     public String showAddForm( Model model ) {
         Book book = new Book();
         book.setName( "Unknown" );
-        model.addAttribute("student", book );
-        return "add-student-form";
+        model.addAttribute("book", book );
+        return "add-book-form";
     }
 
     /**
@@ -70,6 +70,11 @@ public class BooksController {
      */
     @RequestMapping( path = "/add", method = RequestMethod.POST )
     public String showAddForm( Book book ) {
+        String unixTime = String.valueOf( System.currentTimeMillis() / 1000L );
+        book.setCreated_at(unixTime);
+        book.setUpdated_at(unixTime);
+        book.setDescription( "description" );
+        book.setYearOfIssue(unixTime);
         this.booksService.addBook( book );
         return "redirect:/books/list";
     }

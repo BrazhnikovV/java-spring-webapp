@@ -1,6 +1,8 @@
 package ru.brazhnikov.controllers;
 
 import java.util.List;
+
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.ui.Model;
 import ru.brazhnikov.entities.Student;
 import ru.brazhnikov.services.StudentsService;
@@ -42,6 +44,7 @@ public class StudentsController {
      * @param model
      * @return String
      */
+    @Secured({"ROLE_MANAGER"})
     @RequestMapping( "/list" )
     public String showStudentsList( Model model ) {
         List<Student> allStudents = this.studentsService.getAllStudentsList();
@@ -54,6 +57,7 @@ public class StudentsController {
      * @param model
      * @return String
      */
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping( path="/add", method=RequestMethod.GET )
     public String showAddForm( Model model ) {
         Student student = new Student();
