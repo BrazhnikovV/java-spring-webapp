@@ -25,4 +25,15 @@ body {
 
 .navbar {
     min-height: 80px;
+    margin-bottom: 10px;
+}
+
+.alert-entity-form {
+    position: absolute;
+    top: -25px;
+    right: 0px;
+}
+
+.form-group {
+    position: relative;
 }

@@ -170,6 +170,18 @@
             <version>1.18.6</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>5.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.1.0.Alpha4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -224,6 +236,27 @@
                             <mainClass>ru.brazhnikov.launcher.Launcher</mainClass>
                         </manifest>
                     </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.2.1</version>
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/institute?useSSL=false</url>
+                    <user>user</user>
+                    <password>password</password>
+                    <schemas>
+                        <schema>institute</schema>
+                    </schemas>
                 </configuration>
             </plugin>
         </plugins>

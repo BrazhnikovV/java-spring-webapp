@@ -27,11 +27,13 @@
     <context:component-scan base-package="ru.brazhnikov"/>
 
     <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+        <constructor-arg ref="servletContext"/>
         <property name="prefix" value="/WEB-INF/templates/"/>
         <property name="suffix" value=".html"/>
         <property name="templateMode" value="HTML5"/>
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
+
     <bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver" />
         <property name="additionalDialects">

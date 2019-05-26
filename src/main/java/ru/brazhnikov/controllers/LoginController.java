@@ -20,15 +20,6 @@ public class LoginController {
      */
     @GetMapping( "/login" )
     public String showMyLoginPage() {
-        return "modern-login";
-    }
-
-    /**
-     * showAccessDeniedPage - показать страницу
-     * @return String
-     */
-    @GetMapping("/accessDenied")
-    public String showAccessDeniedPage() {
-        return "access-denied";
+        return "login";
     }
 }
