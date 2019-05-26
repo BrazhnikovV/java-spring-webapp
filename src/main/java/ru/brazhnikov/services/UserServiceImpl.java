@@ -48,18 +48,18 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public void save(SystemUser systemUser) {
-		User user = new User();
-		user.setUserName(systemUser.getUserName());
-		user.setPassword(passwordEncoder.encode(systemUser.getPassword()));
-		user.setFirstName(systemUser.getFirstName());
-		user.setLastName(systemUser.getLastName());
-		user.setEmail(systemUser.getEmail());
-		user.setPhone(systemUser.getPhone());
+	public void save(User user) {
+	//	User user = new User();
+	//	user.setUserName(systemUser.getUserName());
+	//	user.setPassword(passwordEncoder.encode(systemUser.getPassword()));
+	//	user.setFirstName(systemUser.getFirstName());
+	//	user.setLastName(systemUser.getLastName());
+	//	user.setEmail(systemUser.getEmail());
+	//	user.setPhone(systemUser.getPhone());
 
 		user.setRoles(Arrays.asList(roleRepository.findOneByName("ROLE_ADMIN")));
 
-		userRepository.save(user);
+		this.userRepository.save(user);
 	}
 
 	@Override
