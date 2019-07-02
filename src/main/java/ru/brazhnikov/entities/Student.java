@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import java.util.List;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.Cascade;
 
 /**
@@ -31,31 +33,56 @@ public class Student {
 
     /**
      *  @access private
+     *  @var Long userId - идентификатор пользователя добавившего студента
+     */
+    @Column( name = "user_id" )
+    private Long userId;
+
+    /**
+     *  @access private
      *  @var String name - имя студента
      */
+    @NotNull(message = "is required")
     @Column( name = "name" )
     private String name;
 
     /**
      *  @access private
-     *  @var String description - описание студента
+     *  @var String lastName - фамилия студента
      */
-    @Column( name = "description" )
-    private String description;
+    @NotNull(message = "is required")
+    @Column( name = "last_name" )
+    private String lastName;
+
+    /**
+     *  @access private
+     *  @var String email - email студента
+     */
+    @NotNull(message = "is required")
+    @Column( name = "email" )
+    private String email;
+
+    /**
+     *  @access private
+     *  @var String phone - телефон студента
+     */
+    @NotNull(message = "is required")
+    @Column( name = "phone" )
+    private String phone;
 
     /**
      *  @access private
      *  @var String created_at - время создания записи
      */
     @Column( name = "created_at" )
-    private String created_at;
+    private Long created_at;
 
     /**
      *  @access private
      *  @var String updated_at - время обновления записи
      */
     @Column( name = "updated_at" )
-    private String updated_at;
+    private Long updated_at;
 
     /**
      *  @access private
@@ -69,9 +96,4 @@ public class Student {
     )
     @Cascade( {org.hibernate.annotations.CascadeType.DELETE, org.hibernate.annotations.CascadeType.DETACH} )
     private List<Course> courses;
-
-    /**
-     * Student - конструктор
-     */
-    public Student() {}
 }

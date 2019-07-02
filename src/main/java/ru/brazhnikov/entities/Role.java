@@ -33,12 +33,4 @@ public class Role {
      */
     @Column(name = "name")
     private String name;
-
-    /**
-     * constructor
-     * @param name - название роли
-     */
-    public Role( String name ) {
-        this.name = name;
-    }
 }
